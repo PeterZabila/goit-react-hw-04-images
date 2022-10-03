@@ -26,7 +26,7 @@ useEffect(() => {
   async function getResponse() {
     setLoading( true );
 
-    const response = fetchResult(URL, searchQuery, page)
+    const response = await fetchResult(URL, searchQuery, page)
       .then(response => {
         if (results) {
           setLoading(false);
@@ -45,7 +45,7 @@ useEffect(() => {
   if(searchQuery) {
     getResponse();
   }
-  
+   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [page, searchQuery])
 
 
