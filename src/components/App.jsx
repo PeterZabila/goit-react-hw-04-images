@@ -28,9 +28,9 @@ useEffect(() => {
 
     const response = await fetchResult(URL, searchQuery, page)
       .then(response => {
-        if (results) {
+        if(response.hits.length !== 0) {
           setLoading(false);
-          setResults(results => [...results, ...response.hits]);
+          setResults(prev => [...prev, ...response.hits]);
           return;
         }
         setResults(response.hits);
@@ -45,7 +45,6 @@ useEffect(() => {
   if(searchQuery) {
     getResponse();
   }
-   // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [page, searchQuery])
 
 
