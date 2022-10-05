@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './App.css';
+import styles from './App.module.css';
 import SearchBar from "./SearchBar/SearchBar";
 import Button from './Button/Button';
 import ImageGallery from './ImageGallery/ImageGallery';
@@ -84,16 +84,16 @@ useEffect(() => {
 
     return (
       <>
-        <div className="App">
+        <div className={styles.App}>
           <SearchBar onSubmit={onSubmit}/>
         </div>
-        <div className='Container'>
+        <div className={styles.Container}>
             {loading && <Loader/>}
-            {isResults ? (<ImageGallery items={results} onClick={openModal} onMore={loadMore} key={page}/>) : (<p className='Message'>Please enter search key words</p>) }
+            {isResults ? (<ImageGallery items={results} onClick={openModal} onMore={loadMore} key={page}/>) : (<p className={styles.Message}>Please enter search key words</p>) }
             {showModal && <Modal onClose={closeModal}><img src={modalContent.largeImageURL.largeImageURL} max-width="600px" alt="" /></Modal>}
             {error && <p>Please try later...</p>}
          </div>
-         <div className='Container'>
+         <div className={styles.Container}>
           {isResults && <Button onClick={loadMore}/>}
          </div>
      
